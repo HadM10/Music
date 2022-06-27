@@ -1,6 +1,7 @@
 //CONNECT TO DATABASE
 const Songs = require('../Models/Songs')
 const { ObjectId } = require('mongodb')
+const uploadPhoto = require('../../uploadPhoto')
 
 //GET SONGS
 exports.getSongs = async (req, res) => {
@@ -26,6 +27,7 @@ exports.getSongs = async (req, res) => {
 
 // ADD OR POST SONGS
 exports.addSongs = async (req, res) => {
+  exports.upload = uploadPhoto.upload.single('photo')
   const newSong = new Songs({
     title: req.body.title,
     path: req.body.path,

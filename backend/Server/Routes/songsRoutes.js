@@ -10,8 +10,8 @@ router.route('/:id')
     .put(songsController.editSongs)
     .delete(songsController.deleteSongs)
 
-router.route('/mysongs/:id')
-    .get(songsController.getPrivatesongs)
+// router.route('/mysongs/:id')
+//     .get(songsController.getPrivatesongs)
 
 // router.route('/newcourse')
 //     .post(songsController.addMySongs)

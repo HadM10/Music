@@ -8,10 +8,10 @@ const Schema = mongoose.Schema;
 
 // Users schema 
 const UsersSchema = new Schema({
-    id: {
-        type: Number,
-        required: true,
-    },
+    // id: {
+    //     type: Number,
+    //     required: true,
+    // },
     fname: {
         type: String,
         required: true,
@@ -28,7 +28,7 @@ const UsersSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        min: 5,
+        min: 4,
         max: 25
     },
     email: {
@@ -73,12 +73,12 @@ const validate2 = (data) => {
 	const schema = Joi.object({
 		fname: Joi.string().min(2).required().label("First Name"),
         lname: Joi.string().min(2).required().label("Last Name"),
-        username: Joi.string().min(5).required().label("Username"),
+        username: Joi.string().min(4).required().label("Username"),
 		email: Joi.string().email().required().label("Email"),
 		photo: Joi.string().label("Photo"),
-        membership: Joi.number().max(100).required().label("Member Since"),
+        membership: Joi.date().label("Member Since"),
 		password: passwordComplexity().required().label("Password"),
-        login: Joi.string().required().label("Last Login"),
+        login: Joi.date().label("Last Login"),
 	});
 	return schema.validate(data);
 };
